@@ -37,4 +37,12 @@ def delete_student(request, id):
     student = get_object_or_404(Student, id=id)
     student.delete()
     return redirect('home')
+
+from rest_framework import viewsets
+from .serializers import StudentSerializer
+
+
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
 # Create your views here.
